@@ -1,7 +1,8 @@
 #logo {
+    margin-left:25px;
     height: 100px;
     width: 100px;
-    margin-left: 30px;
+    
 }
 
 .Tilt {
@@ -13,7 +14,7 @@
     height: 100%;
     width: 100%;
 
-    background-image: url(logo.png);
+    background-image: url(face.png);
     background-size: cover;
     background-position: center;
     

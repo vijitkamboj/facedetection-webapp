@@ -23,6 +23,6 @@
 
 .navbtn:hover {
     color: whitesmoke;
-    
+    cursor: pointer
 }
 
