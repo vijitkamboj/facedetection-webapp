@@ -1,0 +1,21 @@
+#nav{
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    height: auto;
+    width: auto;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.navbtn{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    padding: 8px;
+    margin-right: 10px;
+}
+
+.navbtn:hover{
+    background-color: brown;
+}
