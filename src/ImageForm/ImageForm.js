@@ -4,10 +4,11 @@ import './ImageForm.css';
 
 function App() {
   return (
-    <div id="ImageForm">
+    <div id="Form-cont">
         <p id="message">This app will detect faces in your pictures.Give it a try!!</p>
-        <div id="">
-            
+        <div id="input-cont">
+            <div id="deticon"></div>
+            <input type="text" />
         </div>
     </div>
 
