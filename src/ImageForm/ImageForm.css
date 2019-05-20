@@ -1,8 +1,10 @@
 #Form-cont{
     align-self: center;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     height:auto;
     width: 95%;
     margin-top: 20px;
@@ -12,18 +14,22 @@ p#message{
     height: auto;
     width: 80%;
     margin-top: 0px;
+
     text-align: center;
     color: whitesmoke;
     font-size: 25px;
     font-weight: bold;
+
     z-index: +1
 }
 
 #input-cont{
     display: flex;
     position: relative;
+
     width: 100%;
     height:60px;
+    
     border-radius: 10px;
     background-color: rgb(255, 251, 251);
 }

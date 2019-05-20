@@ -1,8 +1,9 @@
 #logo {
     margin-left:2.5%;
+    
     height: 100px;
     width: 100px;
-    
+    z-index: 0;
 }
 
 .Tilt {
