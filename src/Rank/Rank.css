@@ -1,0 +1,19 @@
+#rank{
+    align-self: center;
+    width: 250px;
+    height: auto;
+    font-size:25px;
+    padding:10px;
+    color: whitesmoke;
+    margin-top: 25px
+}
+.rankh{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 7px;
+
+}
+#rankn{
+    font-weight: bolder;
+    font-size: 40px;
+}

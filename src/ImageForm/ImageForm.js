@@ -7,8 +7,8 @@ function App() {
     <div id="Form-cont">
         <p id="message">This app will detect faces in your pictures.Give it a try!!</p>
         <div id="input-cont">
-            <div id="deticon"></div>
-            <input type="text" />
+            <div id="deticon" ></div>
+            <input type="text" placeholder="Enter the url of image..."/>
         </div>
     </div>
 
