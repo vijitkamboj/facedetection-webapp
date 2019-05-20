@@ -1,10 +1,10 @@
 import React from 'react';
 import './FaceRecog.css';
 
-const App = () => {
+const App = ({imageUrl}) => {
   return (
     <div id="facerecog">
-        <img src= {'https://samples.clarifai.com/face-det.jpg'} alt= {"response"} />
+        <img src= {imageUrl} alt="" />
     </div>
   );
 }
