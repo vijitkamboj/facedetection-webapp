@@ -5,7 +5,8 @@
     font-size:25px;
     padding:10px;
     color: whitesmoke;
-    margin-top: 25px
+    margin-top: 25px;
+    z-index: +1;
 }
 .rankh{
     text-align: center;

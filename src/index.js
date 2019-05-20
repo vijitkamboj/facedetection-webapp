@@ -13,8 +13,17 @@ const particlesOptions = {
             value: 100,
             density: {
                 enable: true,
-                value_area: 1000
+                value_area: 800
             }
+        },line_linked: {
+            color: "#000000",
+        },
+        color: {
+            value: "#000000",
+        },shape: {
+            type: "polygon",
+        },size: {
+            value: 2
         }
     }
 }
