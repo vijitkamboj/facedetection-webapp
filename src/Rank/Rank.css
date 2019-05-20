@@ -4,9 +4,9 @@
     height: auto;
     font-size:25px;
     padding:10px;
-    color: whitesmoke;
+    color: rgb(255, 255, 255);
     margin-top: 25px;
-    z-index: +1;
+    z-index: 0;
 }
 .rankh{
     text-align: center;

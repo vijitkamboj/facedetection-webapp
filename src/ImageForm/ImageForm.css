@@ -16,11 +16,10 @@ p#message{
     margin-top: 0px;
 
     text-align: center;
-    color: whitesmoke;
+    color: rgb(255, 255, 255);
     font-size: 25px;
     font-weight: bold;
-
-    z-index: +1
+    z-index: 0
 }
 
 #input-cont{
@@ -31,7 +30,7 @@ p#message{
     height:60px;
     
     border-radius: 10px;
-    background-color: rgb(255, 251, 251);
+    background-color: rgb(255, 255, 255);
 }
 
 input {
