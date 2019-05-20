@@ -4,6 +4,7 @@
     height: auto;
     font-size:25px;
     padding:10px;
+    margin-top: 10px;
     color: rgb(255, 255, 255);
     z-index: 0;
 }
@@ -16,4 +17,27 @@
 #rankn{
     font-weight: bolder;
     font-size: 40px;
+}
+
+@media only screen and (max-width: 645px){
+    #rank{
+        align-self: center;
+        width: 250px;
+        height: auto;
+        font-size:25px;
+        padding:10px;
+        margin-top: 25px;
+        color: rgb(255, 255, 255);
+        z-index: 0;
+    }
+    .rankh{
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 7px;
+    
+    }
+    #rankn{
+        font-weight: bolder;
+        font-size: 40px;
+    }
 }

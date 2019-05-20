@@ -1,22 +1,52 @@
-#logo {
-    margin-left:2.5%;
-    
-    height: 100px;
-    width: 100px;
-    z-index: 0;
+@media only screen and (max-width: 645px){
+
+    #logo {
+        position:absolute;
+        top:2%;
+        left: 2%;
+        height: 60px;
+        width: 60px;
+        z-index: 0;
+    }
+
+    .Tilt {
+        height: 100%;
+        width: 100%;
+    }
+
+    .Tilt-inner {
+        height: 100%;
+        width: 100%;
+
+        background-image: url(face.png);
+        background-size: cover;
+        background-position: center;
+        
+    }
 }
 
-.Tilt {
-    height: 100%;
-    width: 100%;
-}
+@media only screen and (min-width: 645px){
+    #logo {
+        margin-left:2.5%;
+        
+        height: 100px;
+        width: 100px;
+        z-index: 0;
+    }
 
-.Tilt-inner {
-    height: 100%;
-    width: 100%;
+    .Tilt {
+        height: 100%;
+        width: 100%;
+    }
 
-    background-image: url(face.png);
-    background-size: cover;
-    background-position: center;
-    
+    .Tilt-inner {
+        height: 100%;
+        width: 100%;
+
+        background-image: url(face.png);
+        background-size: cover;
+        background-position: center;
+        
+    }
+
 }
