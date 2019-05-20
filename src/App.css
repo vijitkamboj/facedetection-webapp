@@ -1,0 +1,16 @@
+#container {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	width: 100%;
+	height: 150vh;	
+}
+
+.particles {
+	height: 100%;
+	width: 100%;
+	
+	position: absolute;
+	z-index: 0
+}
