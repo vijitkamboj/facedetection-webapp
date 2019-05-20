@@ -4,7 +4,7 @@ const particlesOptions = {
             value:80,
             density: {
                 enable: true,
-                value_area: 800
+                value_area: 1000
             }
         },line_linked: {
             color: "#000000",
@@ -14,7 +14,7 @@ const particlesOptions = {
         },shape: {
             type: "polygon",
         },size: {
-            value: 3
+            value: 4
         }
     }
 }
