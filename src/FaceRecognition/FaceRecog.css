@@ -1,5 +1,6 @@
 @media only screen and (max-width: 645px){
     #facerecog{
+        position: relative;
         margin-top: 20px;
         align-self: center;
         z-index: 0;
@@ -7,21 +8,30 @@
     }
     img{
         border-radius:10px;
-        max-width: 350px;
+        width: 350px;
         height: auto;
+    }
+    #face{
+        position: absolute;
+        border: 2px solid white;
     }
 }
 
 @media only screen and (min-width: 645px){
     #facerecog{
-        margin-top: 20px;
         align-self: center;
+        position: relative;
+        margin-top: 20px;
         z-index: 0;
-
     }
     img{
         border-radius:10px;
         max-width: 500px;
         height: auto;
+    }
+
+    #face{
+        position: absolute;
+        border: 2px solid white;
     }
 }
