@@ -8,6 +8,7 @@ import Nav from './Nav/Nav';
 import Logo from './Logo/Logo';
 import ImageForm from './ImageForm/ImageForm'
 import Rank from './Rank/Rank'
+import FaceRecog from './FaceRecognition/FaceRecog'
 
 const app = new Clarify.App(
     {
@@ -48,6 +49,7 @@ class App extends Component {
                 <Logo />
                 <Rank />
                 <ImageForm onInputChange = {this.onInputChange} onSubmit = {this.onSubmit}/>
+                <FaceRecog />
             </div>
         );
     }
