@@ -9,6 +9,7 @@ import Logo from './Logo/Logo';
 import ImageForm from './ImageForm/ImageForm'
 import Rank from './Rank/Rank'
 import FaceRecog from './FaceRecognition/FaceRecog'
+import Signin from './Signin/Signin'
 
 const app = new Clarify.App(
     {
@@ -58,6 +59,7 @@ class App extends Component {
                 <Rank />
                 <ImageForm onInputChange = {this.onInputChange} onSubmit = {this.onSubmit}/>
                 <FaceRecog imageUrl= {this.state.imageUrl} faceBox= {this.state.faceBox}/>
+                <Signin />
             </div>
         );
     }
