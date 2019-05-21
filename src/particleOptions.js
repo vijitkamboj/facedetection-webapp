@@ -1,7 +1,7 @@
 const particlesOptions = {
     particles: {
         number: {
-            value:50,
+            value:100,
             density: {
                 enable: true,
                 value_area: 1000
@@ -14,7 +14,7 @@ const particlesOptions = {
         },shape: {
             type: "polygon",
         },size: {
-            value: 4
+            value: 7
         }
     }
 }
