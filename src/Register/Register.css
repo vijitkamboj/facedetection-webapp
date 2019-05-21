@@ -7,7 +7,6 @@
 
     height: auto;
     width:350px;
-    z-index: 0;
     color: black;
 
     position: absolute;
@@ -18,6 +17,8 @@
     -webkit-box-shadow: 0px 0px 49px -10px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 49px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 49px -10px rgba(0, 0, 0, 0.75);
+
+    z-index: 0;
 }
 
     #heading{

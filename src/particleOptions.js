@@ -14,7 +14,7 @@ const particlesOptions = {
         },shape: {
             type: "polygon",
         },size: {
-            value: 7
+            value: 4
         }
     }
 }
