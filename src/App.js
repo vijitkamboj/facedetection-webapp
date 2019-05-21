@@ -60,8 +60,8 @@ class App extends Component {
                 <Rank />
                 <ImageForm onInputChange = {this.onInputChange} onSubmit = {this.onSubmit}/>
                 <FaceRecog imageUrl= {this.state.imageUrl} faceBox= {this.state.faceBox}/>
-                {/* <Signin /> */}
-                <Register/>
+                <Signin />
+                {/* <Register/> */}
             </div>
         );
     }
