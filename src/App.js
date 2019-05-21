@@ -24,7 +24,10 @@ class App extends Component {
         this.state ={
             input : "",
             imageUrl : "",
-            faceBox : {}
+            faceBox : {},
+            route:"home",
+            isSignedIn: true
+            
         }  
     }
 
@@ -55,13 +58,11 @@ class App extends Component {
         return (
             <div id="container">
                 <Particles className='particles' params={particlesOptions} />
-                <Nav />
+                <Nav isSignedIn={this.state.isSignedIn}/> 
                 <Logo />
-                <Rank />
-                <ImageForm onInputChange = {this.onInputChange} onSubmit = {this.onSubmit}/>
-                <FaceRecog imageUrl= {this.state.imageUrl} faceBox= {this.state.faceBox}/>
-                <Signin />
-                {/* <Register/> */}
+                <Rank isSignedIn={this.state.isSignedIn} />
+                <ImageForm isSignedIn={this.state.isSignedIn} onInputChange = {this.onInputChange} onSubmit = {this.onSubmit}/>
+                <FaceRecog isSignedIn={this.state.isSignedIn} imageUrl= {this.state.imageUrl} faceBox= {this.state.faceBox}/>
             </div>
         );
     }
