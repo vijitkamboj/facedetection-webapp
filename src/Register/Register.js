@@ -17,7 +17,7 @@ const App = () => {
 				<p className="label">Password</p>
 				<input type="password" className="form" />
 			</div>
-			<div id="signin">Register</div>
+			<div id="register">Register</div>
 		</div>
 	)
 }

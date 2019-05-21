@@ -67,7 +67,7 @@
         }
 
 
-        #signin{
+        #register{
             margin-top: 30px;
             margin-bottom: 40px;
 
@@ -76,7 +76,7 @@
             font-weight: bold;
             transition: all 0.3s
         }
-        #signin:hover{
+        #register:hover{
             cursor: pointer;
             color:white
         }
