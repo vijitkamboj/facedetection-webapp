@@ -7,12 +7,11 @@ const App = ({imageUrl , faceBoxes , isSignedIn}) => {
     return (
       <div id="facerecog">
         {
-          faceBoxes.map( (i) =>{
-            const {posTop , posLeft , bheight , bwidth} = i;
+          	faceBoxes.map( (face , id) =>{
+            const {posTop , posLeft , bheight , bwidth} = face;
             return(
-              <FaceBox posTop={posTop} posLeft={posLeft} bheight={bheight} bwidth={bwidth}/>
-            )
-          } )
+              <FaceBox key={id} posTop={posTop} posLeft={posLeft} bheight={bheight} bwidth={bwidth}/>
+        	)})
         }
         <img src= {imageUrl} alt="" id="inputimg"/>
       </div>
