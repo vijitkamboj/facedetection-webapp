@@ -24,21 +24,33 @@ class App extends Component {
         this.state ={
             input : "",
             imageUrl : "",
-            faceBox : {},
-            route:"signin",
-            isSignedIn: false
+            faceBoxes : [],
+            route:"home",
+            isSignedIn: true
             
         }  
     }
 
-    faceBoxPosition = ({top_row,left_col,bottom_row,right_col}) =>{
+
+    faceBoxPositions = (positionsArray) => {
         const image = document.getElementById("inputimg");
         const [iwidth,iheight] = [image.width , image.height];
-        const posTop = top_row*iheight;
-        const posLeft = left_col*iwidth;
-        const bheight = iheight*(bottom_row - top_row );
-        const bwidth = iwidth*(right_col - left_col )
-        this.setState({faceBox : {posTop , posLeft , bheight , bwidth}})
+        const box_position = positionsArray.map(  (i)  => {
+            const {top_row,left_col,bottom_row,right_col} = i ;
+            const posTop = top_row*iheight;
+            const posLeft = left_col*iwidth;
+            const bheight = iheight*(bottom_row - top_row );
+            const bwidth = iwidth*(right_col - left_col );
+            return({posTop , posLeft , bheight , bwidth})
+        } )
+
+        this.setState({faceBoxes : box_position});
+    }
+
+    boundingBox = (regionData) => {
+        return ( regionData.map( (i) => {
+            return i.region_info.bounding_box
+        }))
     }
 
     onInputChange = (event) =>{
@@ -49,9 +61,10 @@ class App extends Component {
         if (this.state.input !== ''){
             this.setState({imageUrl:this.state.input});
             app.models.predict(Clarify.FACE_DETECT_MODEL, this.state.input)
-            .then( response => this.faceBoxPosition(response.outputs[0].data.regions[0].region_info.bounding_box))
+            .then( response => this.faceBoxPositions(this.boundingBox(response.outputs[0].data.regions)))
             .catch( err => "OOPS Something went wrong" + err)
         }
+        
     }
 
     onRouteChange = (route) =>{
@@ -65,11 +78,9 @@ class App extends Component {
     }
 
     render(){
-        const isSignedIn = this.state.isSignedIn;
-        const route = this.state.route;
-        const imageUrl = this.state.imageUrl;
-        const faceBox = this.state.faceBox;
-        const onRouteChange = this.onRouteChange;
+        const {isSignedIn , route , imageUrl, faceBoxes} = this.state;
+        const {onRouteChange , onInputChange , onSubmit} = this;
+        
         return (
             <div id="container">
                 <Particles 
@@ -87,13 +98,13 @@ class App extends Component {
 
                 <ImageForm 
                 isSignedIn={isSignedIn}
-                 onInputChange = {this.onInputChange} 
-                 onSubmit = {this.onSubmit}/>
+                 onInputChange = {onInputChange} 
+                 onSubmit = {onSubmit}/>
 
                 <FaceRecog 
                 isSignedIn={isSignedIn} 
                 imageUrl= {imageUrl} 
-                faceBox= {faceBox}/>
+                faceBoxes= {faceBoxes}/>
 
                 <Signin 
                 route = {route} 
