@@ -31,5 +31,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project is made using React.js and Claraifai's FACE_DETECT_MODEL API",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vijitkamboj/facedetection-webapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vijitkamboj/facedetection-webapp/issues"
+  },
+  "homepage": "https://github.com/vijitkamboj/facedetection-webapp#readme"
 }
