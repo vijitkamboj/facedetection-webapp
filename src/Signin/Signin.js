@@ -19,10 +19,26 @@ class App extends React.Component {
 	}
 
 	onSubmitSignIn = () => {
-		
-		this.props.onRouteChange("home")
-		this.setState({signInEmail : ''})
-		this.setState({signInPass :''})
+		console.log(this.state)
+		fetch("http://localhost:3000/signin" ,{
+			method : 'post',
+			headers : {'Content-type' : 'application/json'},
+			body: JSON.stringify({
+				email : this.state.signInEmail,
+				password : this.state.signInPass
+			})
+		})
+		.then( res => res.json())
+		.then( data => {
+			if (data === "success"){
+				this.props.onRouteChange("home")
+				this.setState({signInEmail : ''})
+				this.setState({signInPass :''})
+			}else{
+				alert("Enter correct email or password ")
+			}
+		})
+
 	}
 
 	render(){
