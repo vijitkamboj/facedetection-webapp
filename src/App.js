@@ -27,10 +27,8 @@ class App extends Component {
             faceBoxes : [],
             route:"signin",
             isSignedIn: false
-            
         }  
     }
-
 
     faceBoxPositions = (positionsArray) => {
         const image = document.getElementById("inputimg");
@@ -57,7 +55,7 @@ class App extends Component {
         this.setState({input: event.target.value})
     }  
 
-    onSubmit = () => {
+    onSubmitImage = () => {
         if (this.state.input !== ''){
             this.setState({imageUrl:this.state.input});
             app.models.predict(Clarify.FACE_DETECT_MODEL, this.state.input)
@@ -79,7 +77,7 @@ class App extends Component {
 
     render(){
         const {isSignedIn , route , imageUrl, faceBoxes} = this.state;
-        const {onRouteChange , onInputChange , onSubmit} = this;
+        const {onRouteChange , onInputChange , onSubmitImage} = this;
         
         return (
             <div id="container">
@@ -98,8 +96,8 @@ class App extends Component {
 
                 <ImageForm 
                 isSignedIn={isSignedIn}
-                 onInputChange = {onInputChange} 
-                 onSubmit = {onSubmit}/>
+                onInputChange = {onInputChange} 
+                onSubmit = {onSubmitImage}/>
 
                 <FaceRecog 
                 isSignedIn={isSignedIn} 
