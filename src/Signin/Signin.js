@@ -1,5 +1,4 @@
 import React from 'react';
-// import './Signin.css';
 
 class App extends React.Component {
 	constructor(){
@@ -7,6 +6,7 @@ class App extends React.Component {
 		this.state = {
 			signInEmail : '',
 			sighInPass : '',
+			error : false
 		}
 	}
 
@@ -33,18 +33,26 @@ class App extends React.Component {
 				this.props.onRouteChange("home")
 				this.setState({signInEmail : ''})
 				this.setState({signInPass :''})
+				this.setState({error :false})
 			}else{
-				alert("Enter correct email or password ")
+				this.setState({error :true})
 			}
 		})
 
 	}
 
+	onKeyPressEnter =(event) => {
+		if (event.keyCode === 13){
+			this.onSubmitSignIn()
+		} 
+	}
+
 	render(){
-		const {route} = this.props;
-		if (route === "signin") {
+		const {route } = this.props;
+		const {error} = this.state;
+		if (route === "signin" && error === false) {
 			return(
-				<div id = "form-cont">
+				<div id = "form-cont" onKeyDown ={this.onKeyPressEnter}>
 					<div id="heading" >Welcome</div>
 					<div className="field">
 						<p className="label">Email</p>
@@ -57,7 +65,23 @@ class App extends React.Component {
 					<div id="signin" onClick={this.onSubmitSignIn}>Sign In</div>
 				</div>
 			)
-		} else {
+		} else if(route === "signin" && error === true) {
+			return (
+				<div id = "form-cont" onKeyDown ={this.onKeyPressEnter}>
+					<div id="heading" >Welcome</div>
+					<div className="field">
+						<p className="label">Email</p>
+						<input type="email" className="form" name="email" onChange={this.onEmailChange}/>
+					</div>
+					<div className="field">
+						<p className="label">Password</p>
+						<input type="password" className="form" name="password" onChange = {this.onPassChange}/>
+					</div>
+					<div id="signin" onClick={this.onSubmitSignIn}>Sign In</div>
+					<p className = "label" id="error">wrong email or password</p>
+				</div>
+			)
+		}else{
 			return null
 		}
 	}
