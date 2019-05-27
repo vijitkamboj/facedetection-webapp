@@ -68,27 +68,32 @@ class App extends Component {
 
     onRouteChange = (route) =>{
         this.setState({route : route});
-        if( route === 'home'){
-            this.setState({isSignedIn: true})
+        switch (route) {
+            case 'home':
+                this.setState({isSignedIn: true})
+                break;
+            case 'signin':
+                this.setState({isSignedIn: false , user:{}});
+                break;
+            case 'register':
+                this.setState({isSignedIn:false})
+                break   
+            default:
+                this.setState({
+                    route:"signin",
+                    isSignedIn: false,
+                    user:{}
+                })
         }
-        else{
-            this.setState({isSignedIn: false})
-        }  
     }
 
-    loadUnloadUser = (user_data,action) => {
-        if(action === 'signin'){
-            this.setState({user : user_data})
-        }else if(action === 'signout'){
-            this.setState({user : {}})
-        }
-        
+    loadUser = (user_data) => {
+        this.setState({user : user_data})
     }
 
     render(){
         const {isSignedIn , route , imageUrl, faceBoxes} = this.state;
         const {onRouteChange , onInputChange , onSubmitImage} = this;
-        
         return (
             <div id="container">
                 <Particles 
@@ -97,7 +102,8 @@ class App extends Component {
 
                 <Nav 
                 isSignedIn={isSignedIn} 
-                onRouteChange= {onRouteChange}/>
+                onRouteChange= {onRouteChange}
+                />
 
                 <Logo />
 
@@ -117,7 +123,7 @@ class App extends Component {
                 <Signin 
                 route = {route} 
                 onRouteChange ={onRouteChange}
-                loadUnloadUser = {this.loadUnloadUser}
+                loadUser = {this.loadUser}
                 />
 
                 <Register 

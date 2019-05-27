@@ -31,7 +31,7 @@ class App extends React.Component {
 		.then( data => {
 			if (data !== false){
 				this.props.onRouteChange("home")
-				this.props.loadUnloadUser(data , 'signin')
+				this.props.loadUser(data)
 				this.setState({signInEmail : ''})
 				this.setState({signInPass :''})
 				this.setState({error :false})

@@ -1,11 +1,13 @@
 import React from 'react';
 import './Nav.css';
 
+
+
 const App = ({isSignedIn , onRouteChange}) => {
 	if (isSignedIn === true) {
 		return(
 			<div id="nav">
-				<div className="navbtn" onClick={() => onRouteChange("signin")}>Sign Out</div>
+				<div className="navbtn" onClick={() =>onRouteChange('signin')}>Sign Out</div>
 			</div>
 		)
 	} else {
