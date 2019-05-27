@@ -59,10 +59,26 @@ class App extends Component {
     onSubmitImage = () => {
         if (this.state.input !== ''){
             this.setState({imageUrl:this.state.input});
+
             app.models.predict(Clarify.FACE_DETECT_MODEL, this.state.input)
-            .then( response => this.faceBoxPositions(this.boundingBox(response.outputs[0].data.regions)))
+            .then( response => {
+                this.faceBoxPositions(this.boundingBox(response.outputs[0].data.regions))
+                fetch("http://localhost:3000/imagecount" ,{
+                    method : 'put',
+                    headers : {'Content-type' : 'application/json'},
+                    body: JSON.stringify({
+                        id : this.state.user.id,
+                        count :this.boundingBox(response.outputs[0].data.regions).length
+                    })
+                }).then(
+                    res => res.json()
+                ).then(
+                    data => this.setState({user : data})
+                )
+            })
             .catch( err => "OOPS Something went wrong" + err)
         }
+
         
     }
 
@@ -94,6 +110,7 @@ class App extends Component {
     render(){
         const {isSignedIn , route , imageUrl, faceBoxes} = this.state;
         const {onRouteChange , onInputChange , onSubmitImage} = this;
+        console.log(this.state)
         return (
             <div id="container">
                 <Particles 
