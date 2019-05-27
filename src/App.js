@@ -89,9 +89,10 @@ class App extends Component {
                 }).then(
                     res => res.json()
                 ).then(
-                    data => this.setState({
-                        user: data
-                    })
+                    data => this.setState(Object.assign(this.state.user, {
+                        entries: data.entries,
+                        rank: data.rank
+                    }))
                 )
             })
             .catch(err => "OOPS Something went wrong" + err)
