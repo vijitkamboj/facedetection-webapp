@@ -29,8 +29,9 @@ class App extends React.Component {
 		})
 		.then( res => res.json())
 		.then( data => {
-			if (data === "success"){
+			if (data !== false){
 				this.props.onRouteChange("home")
+				this.props.loadUnloadUser(data , 'signin')
 				this.setState({signInEmail : ''})
 				this.setState({signInPass :''})
 				this.setState({error :false})

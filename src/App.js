@@ -26,7 +26,8 @@ class App extends Component {
             imageUrl : "",
             faceBoxes : [],
             route:"signin",
-            isSignedIn: false
+            isSignedIn: false,
+            user:{}
         }  
     }
 
@@ -75,6 +76,15 @@ class App extends Component {
         }  
     }
 
+    loadUnloadUser = (user_data,action) => {
+        if(action === 'signin'){
+            this.setState({user : user_data})
+        }else if(action === 'signout'){
+            this.setState({user : {}})
+        }
+        
+    }
+
     render(){
         const {isSignedIn , route , imageUrl, faceBoxes} = this.state;
         const {onRouteChange , onInputChange , onSubmitImage} = this;
@@ -106,7 +116,9 @@ class App extends Component {
 
                 <Signin 
                 route = {route} 
-                onRouteChange ={onRouteChange}/>
+                onRouteChange ={onRouteChange}
+                loadUnloadUser = {this.loadUnloadUser}
+                />
 
                 <Register 
                 route = {route} 
