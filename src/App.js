@@ -125,7 +125,8 @@ class App extends Component {
                 <Logo />
 
                 <Rank 
-                isSignedIn={isSignedIn} />
+                isSignedIn={isSignedIn}
+                user = {this.state.user} />
 
                 <ImageForm 
                 isSignedIn={isSignedIn}
