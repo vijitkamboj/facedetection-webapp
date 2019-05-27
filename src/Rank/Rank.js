@@ -6,7 +6,7 @@ const App = ({isSignedIn ,user}) => {
     return (
       <div id="rank">
         <div className="rankh">{`${user.name}`}, your rank is ...</div>
-        <div className="rankh" id="rankn">#1</div>
+        <div className="rankh" id="rankn">#{`${user.rank}`}</div>
       </div>
     )
   } else {

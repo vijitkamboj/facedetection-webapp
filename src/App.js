@@ -86,10 +86,18 @@ class App extends Component {
         this.setState({route : route});
         switch (route) {
             case 'home':
-                this.setState({isSignedIn: true})
+                this.setState({
+                    isSignedIn: true
+                })
                 break;
             case 'signin':
-                this.setState({isSignedIn: false , user:{}});
+                this.setState({
+                    isSignedIn: false,
+                    user:{},
+                    input : "",
+                    imageUrl : "",
+                    faceBoxes : []
+                })
                 break;
             case 'register':
                 this.setState({isSignedIn:false})
@@ -106,6 +114,7 @@ class App extends Component {
     loadUser = (user_data) => {
         this.setState({user : user_data})
     }
+    
 
     render(){
         const {isSignedIn , route , imageUrl, faceBoxes} = this.state;
