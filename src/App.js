@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Particles from 'react-particles-js';
 import Clarify from 'clarifai';
 import './App.css';
@@ -12,78 +12,98 @@ import FaceRecog from './FaceRecognition/FaceRecog'
 import Signin from './Signin/Signin'
 import Register from './Register/Register'
 
-const app = new Clarify.App(
-    {
-        apiKey: "f361776820ed4c49989ed965325baaae"
-    }
-);
+const app = new Clarify.App({
+    apiKey: "f361776820ed4c49989ed965325baaae"
+});
 
 class App extends Component {
-    constructor(){
+    constructor() {
         super();
-        this.state ={
-            input : "",
-            imageUrl : "",
-            faceBoxes : [],
-            route:"signin",
+        this.state = {
+            input: "",
+            imageUrl: "",
+            faceBoxes: [],
+            route: "signin",
             isSignedIn: false,
-            user:{}
-        }  
+            user: {}
+        }
     }
 
     faceBoxPositions = (positionsArray) => {
         const image = document.getElementById("inputimg");
-        const [iwidth,iheight] = [image.width , image.height];
-        const box_position = positionsArray.map(  (i)  => {
-            const {top_row,left_col,bottom_row,right_col} = i ;
-            const posTop = top_row*iheight;
-            const posLeft = left_col*iwidth;
-            const bheight = iheight*(bottom_row - top_row );
-            const bwidth = iwidth*(right_col - left_col );
-            return({posTop , posLeft , bheight , bwidth})
-        } )
+        const [iwidth, iheight] = [image.width, image.height];
+        const box_position = positionsArray.map((i) => {
+            const {
+                top_row,
+                left_col,
+                bottom_row,
+                right_col
+            } = i;
+            const posTop = top_row * iheight;
+            const posLeft = left_col * iwidth;
+            const bheight = iheight * (bottom_row - top_row);
+            const bwidth = iwidth * (right_col - left_col);
+            return ({
+                posTop,
+                posLeft,
+                bheight,
+                bwidth
+            })
+        })
 
-        this.setState({faceBoxes : box_position});
+        this.setState({
+            faceBoxes: box_position
+        });
     }
 
     boundingBox = (regionData) => {
-        return ( regionData.map( (i) => {
+        return (regionData.map((i) => {
             return i.region_info.bounding_box
         }))
     }
 
-    onInputChange = (event) =>{
-        this.setState({input: event.target.value})
-    }  
+    onInputChange = (event) => {
+        this.setState({
+            input: event.target.value
+        })
+    }
 
     onSubmitImage = () => {
-        if (this.state.input !== ''){
-            this.setState({imageUrl:this.state.input});
+        if (this.state.input !== '') {
+            this.setState({
+                imageUrl: this.state.input
+            });
 
             app.models.predict(Clarify.FACE_DETECT_MODEL, this.state.input)
-            .then( response => {
+            .then(response => {
                 this.faceBoxPositions(this.boundingBox(response.outputs[0].data.regions))
-                fetch("http://localhost:3000/imagecount" ,{
-                    method : 'put',
-                    headers : {'Content-type' : 'application/json'},
+                fetch("http://localhost:3000/imagecount", {
+                    method: 'put',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
                     body: JSON.stringify({
-                        id : this.state.user.id,
-                        count :this.boundingBox(response.outputs[0].data.regions).length
+                        id: this.state.user.id,
+                        count: this.boundingBox(response.outputs[0].data.regions).length
                     })
                 }).then(
                     res => res.json()
                 ).then(
-                    data => this.setState({user : data})
+                    data => this.setState({
+                        user: data
+                    })
                 )
             })
-            .catch( err => "OOPS Something went wrong" + err)
+            .catch(err => "OOPS Something went wrong" + err)
         }
 
-        
+
     }
 
-    onRouteChange = (route) =>{
-        this.setState({route : route});
+    onRouteChange = (route) => {
+        this.setState({
+            route: route
+        });
         switch (route) {
             case 'home':
                 this.setState({
@@ -93,28 +113,31 @@ class App extends Component {
             case 'signin':
                 this.setState({
                     isSignedIn: false,
-                    user:{},
-                    input : "",
-                    imageUrl : "",
-                    faceBoxes : []
+                    user: {},
+                    input: "",
+                    imageUrl: "",
+                    faceBoxes: []
                 })
                 break;
             case 'register':
-                this.setState({isSignedIn:false})
-                break   
+                this.setState({
+                    isSignedIn: false
+                })
+                break
             default:
                 this.setState({
-                    route:"signin",
+                    route: "signin",
                     isSignedIn: false,
-                    user:{}
+                    user: {}
                 })
         }
     }
 
     loadUser = (user_data) => {
-        this.setState({user : user_data})
+        this.setState({
+            user: user_data
+        })
     }
-    
 
     render(){
         const {isSignedIn , route , imageUrl, faceBoxes} = this.state;
