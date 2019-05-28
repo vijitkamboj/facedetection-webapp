@@ -66,12 +66,15 @@ class App extends Component {
         this.setState({
             input: event.target.value
         })
+        if (event.target.value === ''){
+            this.setState({imageUrl:'',faceBoxes:[]})
+        }
     }
 
     onSubmitImage = () => {
         if (this.state.input !== '') {
             this.setState({
-                imageUrl: this.state.input
+                imageUrl: this.state.input,
             });
 
             app.models.predict(Clarify.FACE_DETECT_MODEL, this.state.input)
@@ -139,6 +142,7 @@ class App extends Component {
             user: user_data
         })
     }
+
 
     render(){
         const {isSignedIn , route , imageUrl, faceBoxes} = this.state;
