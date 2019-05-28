@@ -5,8 +5,8 @@ const App = ({isSignedIn ,user}) => {
   if ( isSignedIn === true) {
     return (
       <div id="rank">
-        <div className="rankh">{`${user.name}`}, your rank is ...</div>
-        <div className="rankh" id="rankn">#{`${user.rank}`}</div>
+        <div className="rankh">{`${user.name}`}, your entry count is ...</div>
+        <div className="rankh" id="rankn">#{`${user.entries}`}</div>
       </div>
     )
   } else {
