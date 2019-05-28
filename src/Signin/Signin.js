@@ -11,11 +11,11 @@ class App extends React.Component {
 	}
 
 	onEmailChange = (event) => {
-		this.setState({signInEmail : event.target.value})
+		this.setState({signInEmail : event.target.value , error:false})
 	}
 
 	onPassChange = (event) => {
-		this.setState({signInPass : event.target.value})
+		this.setState({signInPass : event.target.value , error:false})
 	}
 
 	onSubmitSignIn = () => {
