@@ -93,8 +93,7 @@ class App extends Component {
                     res => res.json()
                 ).then(
                     data => this.setState(Object.assign(this.state.user, {
-                        entries: data.entries,
-                        rank: data.rank
+                        entries: data.entries
                     }))
                 )
             })
@@ -147,7 +146,6 @@ class App extends Component {
     render(){
         const {isSignedIn , route , imageUrl, faceBoxes} = this.state;
         const {onRouteChange , onInputChange , onSubmitImage} = this;
-        console.log(this.state)
         return (
             <div id="container">
                 <Particles 
