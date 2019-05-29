@@ -140,6 +140,7 @@ class App extends Component {
         this.setState({
             user: user_data
         })
+        this.onRouteChange("home");
     }
 
 
