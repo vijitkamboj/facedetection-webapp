@@ -74,7 +74,7 @@ class App extends Component {
                 imageUrl: this.state.input,
             });
 
-            fetch("http://localhost:3000/imageApi", {
+            fetch("https://git.heroku.com/vast-woodland-56506.git/imageApi", {
                 method: 'post',
                 headers: {
                     'Content-type': 'application/json'
@@ -86,7 +86,7 @@ class App extends Component {
             .then( res => res.json())
             .then(response => {
                 this.faceBoxPositions(this.boundingBox(response.outputs[0].data.regions))
-                fetch("http://localhost:3000/imagecount", {
+                fetch("https://git.heroku.com/vast-woodland-56506.git/imagecount", {
                     method: 'put',
                     headers: {
                         'Content-type': 'application/json'
