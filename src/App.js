@@ -4,13 +4,13 @@ import Clarify from 'clarifai';
 import './App.css';
 
 import particlesOptions from './particleOptions'
-import Nav from './Nav/Nav';
-import Logo from './Logo/Logo';
-import ImageForm from './ImageForm/ImageForm'
-import Rank from './Rank/Rank'
-import FaceRecog from './FaceRecognition/FaceRecog'
-import Signin from './Signin/Signin'
-import Register from './Register/Register'
+import Nav from './Components/Nav/Nav';
+import Logo from './Components/Logo/Logo';
+import ImageForm from './Components/ImageForm/ImageForm'
+import Rank from './Components/Rank/Rank'
+import FaceRecog from './Components/FaceRecognition/FaceRecog'
+import Signin from './Containers/Signin/Signin'
+import Register from './Containers/Register/Register'
 
 const app = new Clarify.App({
     apiKey: "f361776820ed4c49989ed965325baaae"
@@ -78,28 +78,28 @@ class App extends Component {
             });
 
             app.models.predict(Clarify.FACE_DETECT_MODEL, this.state.input)
-            .then(response => {
-                this.faceBoxPositions(this.boundingBox(response.outputs[0].data.regions))
-                fetch("http://localhost:3000/imagecount", {
-                    method: 'put',
-                    headers: {
-                        'Content-type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id: this.state.user.id,
-                        count: this.boundingBox(response.outputs[0].data.regions).length
-                    })
-                }).then(
-                    res => res.json()
-                ).then(
-                    new_entries => {
+                .then(response => {
+                    this.faceBoxPositions(this.boundingBox(response.outputs[0].data.regions))
+                    fetch("http://localhost:3000/imagecount", {
+                        method: 'put',
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: this.state.user.id,
+                            count: this.boundingBox(response.outputs[0].data.regions).length
+                        })
+                    }).then(
+                        res => res.json()
+                    ).then(
+                        new_entries => {
                             this.setState(Object.assign(this.state.user, {
                                 entries: new_entries
                             }))
-                }
-                )
-            })
-            .catch(err => "Error in getting response from FACE DETECT api " + err)
+                        }
+                    )
+                })
+                .catch(err => "Error in getting response from FACE DETECT api " + err)
         }
 
     }
