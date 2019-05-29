@@ -15,32 +15,35 @@ class App extends React.Component {
 	}
 
 	onPassChange = (event) => {
-		this.setState({signInPass : event.target.value , error:false})
+		this.setState({signInPass : event.target.value})
+		this.setState({error:false})
 	}
 
 	onSubmitSignIn = () => {
-		fetch("http://localhost:3000/signin" ,{
-			method : 'post',
-			headers : {'Content-type' : 'application/json'},
-			body: JSON.stringify({
-				email : this.state.signInEmail,
-				password : this.state.signInPass
+		if ( this.state.signInEmail === '' || this.state.signInPass === ''){
+			this.setState({error: true})
+		}else{
+			fetch("http://localhost:3000/signin" ,{
+				method : 'post',
+				headers : {'Content-type' : 'application/json'},
+				body: JSON.stringify({
+					email : this.state.signInEmail,
+					password : this.state.signInPass
+				})
 			})
-		})
-		.then( res => res.json())
-		.then( data => {
-			if (data !== false){
-				this.props.onRouteChange("home")
-				this.props.loadUser(data)
-				this.setState({signInEmail : ''})
-				this.setState({signInPass :''})
-				this.setState({error :false})
-			}else{
-				
-				this.setState({error :true})
-			}
-		})
-
+			.then( res => res.json())
+			.then( data => {
+				if (data !== false){
+					this.props.loadUser(data);
+					this.onRouteChange("home");
+					this.setState({signInEmail : '',signInPass :''});
+					this.setState({error:false})
+				}else{
+					
+					this.setState({error :true})
+				}
+			}).catch("Error while signin")
+		}
 	}
 
 	onKeyPressEnter =(event) => {
@@ -50,6 +53,7 @@ class App extends React.Component {
 	}
 
 	render(){
+
 		const {route } = this.props;
 		const {error} = this.state;
 		if (route === "signin" && error === false) {

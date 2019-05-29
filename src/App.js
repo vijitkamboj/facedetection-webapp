@@ -97,7 +97,7 @@ class App extends Component {
                     }))
                 )
             })
-            .catch(err => "OOPS Something went wrong" + err)
+            .catch(err => "Error in increasing entries " + err)
         }
 
 
