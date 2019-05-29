@@ -25,16 +25,21 @@ class App extends React.Component{
 	}
 
 	onSubmitRegister = () => {
-		fetch('http://localhost:3000/register' , {
-			method : 'post',
-			headers : {'Content-type' : 'application/json'},
-			body: JSON.stringify({
-				email : this.state.registerEmail,
-				password : this.state.registerPass,
-				name : this.state.registerName
+		const {registerEmail ,registerName ,registerPass} = this.state;
+		if ( registerEmail !== '' && registerName !== '' && registerPass !==''){
+			fetch('http://localhost:3000/register' , {
+				method : 'post',
+				headers : {'Content-type' : 'application/json'},
+				body: JSON.stringify({
+					email : this.state.registerEmail,
+					password : this.state.registerPass,
+					name : this.state.registerName
+				})
 			})
-		})
-		this.props.onRouteChange('signin')
+			this.props.onRouteChange('signin')
+		}else{
+			alert("Please fill out all feilds")
+		}
 	}
 
 	render(){

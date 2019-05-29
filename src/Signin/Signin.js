@@ -36,7 +36,6 @@ class App extends React.Component {
 				if (data !== false){
 					this.props.loadUser(data);
 					this.setState({signInEmail : '',signInPass :''});
-					this.setState({error:false})
 				}else{
 					
 					this.setState({error :true})
