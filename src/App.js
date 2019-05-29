@@ -92,14 +92,15 @@ class App extends Component {
                 }).then(
                     res => res.json()
                 ).then(
-                    data => this.setState(Object.assign(this.state.user, {
-                        entries: data.entries
-                    }))
+                    new_entries => {
+                            this.setState(Object.assign(this.state.user, {
+                                entries: new_entries
+                            }))
+                }
                 )
             })
-            .catch(err => "Error in increasing entries " + err)
+            .catch(err => "Error in getting response from FACE DETECT api " + err)
         }
-
 
     }
 
