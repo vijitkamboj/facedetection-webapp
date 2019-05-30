@@ -19,7 +19,7 @@ body{
 
 #root{
 	width:100%;
-	height:100%;
+	height:auto;
 }
 
 ::-webkit-scrollbar {
@@ -28,6 +28,13 @@ body{
 
 @media only screen and (max-width: 645px){
 	body{
-		background-image: url(Assets/backlit-dawn-fog-2088210.jpg);
+		background-image: none;
 }
+	#root{
+		min-height: 100vh;
+		background-image: url(Assets/backlit-dawn-fog-2088210.jpg);
+		background-attachment: fixed;
+		background-size: cover;
+		background-position: center;
+	}
 }

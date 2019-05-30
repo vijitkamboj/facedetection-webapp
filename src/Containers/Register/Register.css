@@ -98,7 +98,9 @@
 @media only screen and (max-width: 645px){
     
 #form-cont{
-    margin-bottom: 30px;
+    position: static;
+    margin-top: 70px;
+    margin-bottom: 40px;
     width:320px;
     border: 2px solid black;
 }
