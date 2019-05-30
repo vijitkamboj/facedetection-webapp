@@ -79,8 +79,6 @@ input {
 
 
 @media only screen and (max-width: 645px) {
-    
-    
     p#message{  
         color: black;
         font-size: 23px;

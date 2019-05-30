@@ -2,7 +2,7 @@
 
     #logo {
         position:absolute;
-        top:2%;
+        top:1.5%;
         left: 2%;
         height: 60px;
         width: 60px;
@@ -28,7 +28,6 @@
 @media only screen and (min-width: 645px){
     #logo {
         margin-left:2.5%;
-        
         height: 100px;
         width: 100px;
         z-index: 0;

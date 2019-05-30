@@ -10,6 +10,7 @@ body{
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background-image: url(Assets/body-back.jpg);
+	background-attachment: fixed;
 	background-size: cover;
 	background-position: center;
 
@@ -27,6 +28,6 @@ body{
 
 @media only screen and (max-width: 645px){
 	body{
-		background-image: url(Assets/backlit-dawn-fog-2088210.jpg)
-	}
+		background-image: url(Assets/backlit-dawn-fog-2088210.jpg);
+}
 }
