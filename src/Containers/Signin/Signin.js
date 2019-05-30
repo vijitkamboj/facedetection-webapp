@@ -23,7 +23,7 @@ class App extends React.Component {
 		if ( this.state.signInEmail === '' || this.state.signInPass === ''){
 			this.setState({error: true})
 		}else{
-			fetch("https://git.heroku.com/vast-woodland-56506.git/signin" ,{
+			fetch("https://vast-woodland-56506.herokuapp.com/signin" ,{
 				method : 'post',
 				headers : {'Content-type' : 'application/json'},
 				body: JSON.stringify({

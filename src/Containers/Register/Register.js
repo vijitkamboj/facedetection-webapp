@@ -27,7 +27,7 @@ class App extends React.Component{
 	onSubmitRegister = () => {
 		const {registerEmail ,registerName ,registerPass} = this.state;
 		if ( registerEmail !== '' && registerName !== '' && registerPass !==''){
-			fetch('https://git.heroku.com/vast-woodland-56506.git/register' , {
+			fetch('https://vast-woodland-56506.herokuapp.com/register' , {
 				method : 'post',
 				headers : {'Content-type' : 'application/json'},
 				body: JSON.stringify({
