@@ -11,7 +11,7 @@ body {
 	background-image: url(Assets/body-back.jpg);
 	background-size: cover;
 	background-position: center;
-	background-attachment: fixed;
+	/* background-attachment: fixed; */
 
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
