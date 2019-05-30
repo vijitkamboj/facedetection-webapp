@@ -94,3 +94,40 @@
             margin-bottom: 20px;
             font-weight: bolder;
         }
+    
+@media only screen and (max-width: 645px){
+    
+#form-cont{
+    width:320px;
+    border: 2px solid black;
+}
+
+    #heading{
+        height: 60px;
+        margin-top: 30px;
+        border-bottom: 2px solid black;
+
+        font-size: 35px;
+    }
+
+    .field{
+        width: 80%;
+        margin-top: 20px;
+    }
+
+        p.label{
+            font-size:25px;
+        }
+
+        input.form{
+            background-color: rgba(255, 255, 255, 0.308);
+        }
+
+
+        #register,#signin{
+            margin-top: 25px;
+            margin-bottom: 25px;
+            border: 1px solid white;
+        }
+
+}

@@ -5,22 +5,28 @@ body {
 
 	margin: 0px;
 	padding:0px;
-
+}
+body{
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background-image: url(Assets/body-back.jpg);
 	background-size: cover;
 	background-position: center;
-	/* background-attachment: fixed; */
 
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 #root{
 	width:100%;
-	height:auto;
+	height:100%;
 }
 
 ::-webkit-scrollbar {
     width: 0px;
+}
+
+@media only screen and (max-width: 645px){
+	body{
+		background-image: url(Assets/backlit-dawn-fog-2088210.jpg)
+	}
 }
