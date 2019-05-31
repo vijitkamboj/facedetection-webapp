@@ -6,8 +6,10 @@ class App extends React.Component {
 		this.state = {
 			signInEmail : '',
 			sighInPass : '',
-			error : false
+			error : false,
+			loading : false
 		}
+
 	}
 
 	onEmailChange = (event) => {
@@ -20,8 +22,9 @@ class App extends React.Component {
 	}
 
 	onSubmitSignIn = () => {
+		this.setState({loading: true});
 		if ( this.state.signInEmail === '' || this.state.signInPass === ''){
-			this.setState({error: true})
+			this.setState({error: true , loading: false})
 		}else{
 			fetch("https://vast-woodland-56506.herokuapp.com/signin" ,{
 				method : 'post',
@@ -35,10 +38,10 @@ class App extends React.Component {
 			.then( data => {
 				if (data !== false){
 					this.props.loadUser(data);
-					this.setState({signInEmail : '',signInPass :''});
+					this.setState({signInEmail : '',signInPass :'', loading: false});
 				}else{
 					
-					this.setState({error :true})
+					this.setState({error :true , loading:false})
 				}
 			}).catch("Error while signin")
 		}
@@ -53,38 +56,59 @@ class App extends React.Component {
 	render(){
 
 		const {route } = this.props;
-		const {error} = this.state;
-		if (route === "signin" && error === false) {
-			return(
-				<div id = "form-cont" onKeyDown ={this.onKeyPressEnter}>
-					<div id="heading" >Welcome</div>
-					<div className="field">
-						<p className="label">Email</p>
-						<input type="email" className="form" name="email" onChange={this.onEmailChange}/>
+		const {error , loading} = this.state;
+		if (route === "signin") {
+			if (loading === false){
+				if (error === false){
+					return(
+						<div id = "form-cont" onKeyDown ={this.onKeyPressEnter}>
+							<div id="heading" >Welcome</div>
+							<div className="field">
+								<p className="label">Email</p>
+								<input type="email" className="form" name="email" onChange={this.onEmailChange}/>
+							</div>
+							<div className="field">
+								<p className="label">Password</p>
+								<input type="password" className="form" name="password" onChange = {this.onPassChange}/>
+							</div>
+							<div id="signin" onClick={this.onSubmitSignIn}>Sign In</div>
+						</div>
+					)
+				}else{
+					return(
+						<div id = "form-cont" onKeyDown ={this.onKeyPressEnter}>
+							<div id="heading" >Welcome</div>
+							<div className="field">
+								<p className="label">Email</p>
+								<input type="email" className="form" name="email" onChange={this.onEmailChange}/>
+							</div>
+							<div className="field">
+								<p className="label">Password</p>
+								<input type="password" className="form" name="password" onChange = {this.onPassChange}/>
+							</div>
+							<div id="signin" onClick={this.onSubmitSignIn}>Sign In</div>
+							<div id = "error" >wrong email or password</div>
+						</div>
+					)
+				}
+			}else{
+				return(
+					<div id = "form-cont" onKeyDown ={this.onKeyPressEnter}>
+						<div id="heading" >Welcome</div>
+						<div className="field">
+							<p className="label">Email</p>
+							<input type="email" className="form" name="email" onChange={this.onEmailChange}/>
+						</div>
+						<div className="field">
+							<p className="label">Password</p>
+							<input type="password" className="form" name="password" onChange = {this.onPassChange}/>
+						</div>
+						<div id="signin" onClick={this.onSubmitSignIn}>Sign In</div>
+						<div id = "login" className="loading" >Signing In...</div>
 					</div>
-					<div className="field">
-						<p className="label">Password</p>
-						<input type="password" className="form" name="password" onChange = {this.onPassChange}/>
-					</div>
-					<div id="signin" onClick={this.onSubmitSignIn}>Sign In</div>
-				</div>
-			)
-		} else if(route === "signin" && error === true) {
-			return (
-				<div id = "form-cont" onKeyDown ={this.onKeyPressEnter}>
-					<div id="heading" >Welcome</div>
-					<div className="field">
-						<p className="label">Email</p>
-						<input type="email" className="form" name="email" onChange={this.onEmailChange}/>
-					</div>
-					<div className="field">
-						<p className="label">Password</p>
-						<input type="password" className="form" name="password" onChange = {this.onPassChange}/>
-					</div>
-					<div id="signin" onClick={this.onSubmitSignIn}>Sign In</div>
-					<p className = "label" id="error">wrong email or password</p>
-				</div>
-			)
+				)
+			}
+	
 		}else{
 			return null
 		}
