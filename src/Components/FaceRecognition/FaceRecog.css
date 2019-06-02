@@ -1,6 +1,6 @@
 @media only screen and (max-width: 645px){
     #facerecog{
-        width:95%;
+        max-width:90%;
         height: auto;
         align-self: center;
         position: relative;
@@ -17,7 +17,7 @@
 
 @media only screen and (min-width: 645px){
     #facerecog{
-        width: 95%;
+        width: auto;
         height: auto;
         align-self: center;
         position: relative;
